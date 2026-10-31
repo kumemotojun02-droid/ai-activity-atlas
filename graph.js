@@ -58,3 +58,18 @@ for(const[id,label]of Object.entries(storeSamples)){nodes[id]={label,type:'outpu
 nodes.shopee.description='14区画のショップ街。店をタップして、そこから活動へ。すべて仮配置。';
 
 for(const id of storeIds)edges.push(['shopee',id,'店舗']);
+
+// Illustrative business paths: shops are one part of the operation.
+Object.assign(nodes,{
+ listinghub:{label:'出品の流れ',type:'activity',description:'商品を見つけ、出品できる形へ整えて公開するまで。工程同士のつながりを辿る仮モデル。'},
+ analysishub:{label:'分析と改善',type:'activity',description:'ショップの結果から問いを作り、改善と次の実験へつなぐ仮モデル。'},
+ aiteam:{label:'担当AI',type:'activity',description:'Shopee事業に関わるAIと活動を見渡すための入口。担当は仮配置。'},
+ sourcing:{label:'商品リサーチ',type:'activity',host:'chatgpt',description:'候補を見つけて、商品制作の入口へつなぐ活動のサンプル。'},
+ preparation:{label:'画像・商品文\n制作',type:'activity',host:'codex',description:'画像・タイトル・説明・バリエーションを整える活動のサンプル。'},
+ publishing:{label:'登録・最終\n確認',type:'activity',host:'claude',description:'登録内容と重量などを確認してショップへ届ける活動のサンプル。'},
+ analysis:{label:'売上・利益\n分析',type:'activity',host:'chatgpt',description:'結果を読み、新しい問いを見つける活動のサンプル。'},
+ improvement:{label:'改善実験',type:'activity',host:'claude',description:'分析から仮説を立て、変更を試して結果へ戻る活動のサンプル。'}
+});
+edges.push(['shopee','listinghub','出品'],['shopee','analysishub','改善'],['shopee','aiteam','担当'],['listinghub','sourcing','候補を探す'],['listinghub','preparation','整える'],['listinghub','publishing','届ける'],['sourcing','preparation','制作へ'],['preparation','publishing','確認へ'],['publishing','shopthread','運営へ'],['analysishub','analysis','結果を読む'],['analysishub','improvement','試す'],['analysis','improvement','仮説 ↔ 結果'],['analysis','fragments','種が生まれる'],['fragments','lab','研究へ'],['aiteam','claude','活動場所'],['aiteam','codex','制作'],['aiteam','chatgpt','構想・分析']);
+for(const id of ['sourcing','preparation','publishing','analysis','improvement'])edges.push([nodes[id].host,id,'活動場所']);
+nodes.shopee.description='ショップの街、出品の流れ、分析と改善、担当AI。事業を複数の入口から見渡す仮モデル。';
