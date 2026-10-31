@@ -73,3 +73,8 @@ Object.assign(nodes,{
 edges.push(['shopee','listinghub','出品'],['shopee','analysishub','改善'],['shopee','aiteam','担当'],['listinghub','sourcing','候補を探す'],['listinghub','preparation','整える'],['listinghub','publishing','届ける'],['sourcing','preparation','制作へ'],['preparation','publishing','確認へ'],['publishing','shopthread','運営へ'],['analysishub','analysis','結果を読む'],['analysishub','improvement','試す'],['analysis','improvement','仮説 ↔ 結果'],['analysis','fragments','種が生まれる'],['fragments','lab','研究へ'],['aiteam','claude','活動場所'],['aiteam','codex','制作'],['aiteam','chatgpt','構想・分析']);
 for(const id of ['sourcing','preparation','publishing','analysis','improvement'])edges.push([nodes[id].host,id,'活動場所']);
 nodes.shopee.description='ショップの街、出品の流れ、分析と改善、担当AI。事業を複数の入口から見渡す仮モデル。';
+
+nodes.shoegroup={label:'シューズ店\n全体の連携',type:'project',description:'MY・PH・THのシューズ店に共通する活動を見渡す仮モデル。'};
+nodes.shoecoord={label:'共通の商品\n表現づくり',type:'activity',host:'claude',description:'タイトル・画像・色サイズ構成の共通化を扱う活動の表示例。'};
+for(const id of ['myshoes','phshoes','thshoes'])edges.push(['shoegroup',id,'ショップ間の連携']);
+edges.push(['shoegroup','shoecoord','共通活動'],['claude','shoecoord','活動場所'],['shoecoord','shopthread','運営へ']);
