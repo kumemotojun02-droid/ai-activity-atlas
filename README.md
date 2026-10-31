@@ -1,2 +1,5 @@
-# ai-activity-atlas
-Interactive AI activity graph — touch-first navigation prototype with sample data.
+# AI Activity Atlas
+
+Touch-first graph explorer. Open https://kumemotojun02-droid.github.io/ai-activity-atlas/
+
+V2: project and AI entry points, semantic depth planes, named agents, activities and shared destinations. All relationships are illustrative samples; assignments and counts are unverified. No external services or private data are connected.
