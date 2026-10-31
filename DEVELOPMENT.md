@@ -10,3 +10,6 @@ Validation: Chrome interaction through project -> named agent -> channel; platfo
 
 
 V3 visual refinement: CSS orbital rings, SVG decorative connection pulses, 18 faint CSS stars, a perspective grid and pointer tap echoes. No imagery, libraries, API calls or live-status claims. Reduced-motion disables ambient animations. Graph topology and navigation remain unchanged.
+
+
+V5: semantic theme switches, hand-built SVG store/chest illustrations, a 14-plot shop district, and an idea vault. Counts, names and relationships are samples, not a live store inventory. localStorage persists only warm/advance preferences per idea, with storage failures surfaced. Theme-aware resize handling preserves 400 ms navigation. Browser-verified entry, store-to-thread navigation, idea selection, and home return. Physical Safari remains unverified.

@@ -39,3 +39,22 @@ for(const [id,n] of Object.entries(nodes))if(n.host)edges.push([n.host,id,'活�
 export const types = {atlas:{name:'全体',color:'#c2b5ff'},project:{name:'プロジェクト',color:'#bba8ff'},platform:{name:'AI / 活動場所',color:'#86bfff'},agent:{name:'AI個体',color:'#72e1c4'},activity:{name:'活動',color:'#a0dfcb'},channel:{name:'発信先',color:'#ffc291'},output:{name:'ショップ',color:'#ffc291'}};
 export const projects=['shopee','revenue','comic','lab','ideas'];
 export const platforms=['claude','chatgpt','codex','grok','muse'];
+
+// Idea-vault examples: sources and possible next steps, not imported private notes.
+types.idea={name:'アイデアの種',color:'#ffd48b'};
+nodes.ideas.description='疑問も、実験のかけらも。まだ形にならない可能性を開く。';
+nodes.spark.label='何気ない疑問';nodes.spark.type='idea';nodes.spark.description='「これって何だろう？」から始まる種。小さな違和感を、次の探索へ。';
+Object.assign(nodes,{
+ fragments:{label:'実験のかけら',type:'idea',description:'うまくいったことも、予想外の結果も。別の問いと出会うのを待つ種。'},
+ interfaceidea:{label:'未来の\nインターフェイス',type:'idea',description:'文字で指示する前に、触って理解できる世界。このAtlasも、その実験の一つ。'},
+ cultures:{label:'常識の違いを\n物語に',type:'idea',description:'何気ない文化の違いを、漫画や物語の入口にする。'},
+ autonomous:{label:'AIだけで\n動く商売',type:'idea',description:'人間の手作業を前提にせず、探索から検証までつながる仕組みを考える。'}
+});
+edges.push(['ideas','fragments','結果から生まれる'],['ideas','interfaceidea','触って育てる'],['ideas','cultures','発想をつなぐ'],['ideas','autonomous','実験へ育てる'],['interfaceidea','atlasbuild','形にする'],['cultures','comic','物語へ'],['autonomous','revenue','検証へ']);
+
+export const storeIds=['my','tw','sg','thtools','phtools','mytools','thshoes','myshoes','phshoes','sgzakka','thzakka','phzakka','mytowel','thtowel'];
+const storeSamples={thtools:'TH工具店',phtools:'PH工具店',mytools:'MY工具店',thshoes:'THシューズ',myshoes:'MYシューズ',phshoes:'PHシューズ',sgzakka:'SG雑貨店',thzakka:'TH雑貨店',phzakka:'PH雑貨店',mytowel:'MYタオル店',thtowel:'THタオル店'};
+for(const[id,label]of Object.entries(storeSamples)){nodes[id]={label,type:'output',description:'ショップの街の操作検証用の仮店舗。実際の店舗・稼働状況は未確認。'};edges.push(['shopthread',id,'管理']);}
+nodes.shopee.description='14区画のショップ街。店をタップして、そこから活動へ。すべて仮配置。';
+
+for(const id of storeIds)edges.push(['shopee',id,'店舗']);
